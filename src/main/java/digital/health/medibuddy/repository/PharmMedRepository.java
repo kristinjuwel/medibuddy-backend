@@ -9,4 +9,5 @@ import digital.health.medibuddy.model.PharmMed;
 public interface PharmMedRepository extends JpaRepository<PharmMed, Long>{
 	PharmMed findByPmedId(Long pmedId);
 	List<PharmMed> findByPharmId(Long pharmId);
+
 }

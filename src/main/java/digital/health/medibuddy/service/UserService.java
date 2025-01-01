@@ -219,7 +219,7 @@ public class UserService {
             if (!loggedInUsers.contains(user)) {
                 loggedInUsers.add(user);
             }
-            return "Login successful";
+            return user.getUserId().toString();
         }
         return "Login denied: Invalid credentials.";
     }
