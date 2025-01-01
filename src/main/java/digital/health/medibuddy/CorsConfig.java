@@ -11,14 +11,6 @@ import java.util.List;
 
 @Configuration
 public class CorsConfig implements WebMvcConfigurer {
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/*")
-                .allowedOrigins()
-                .allowedMethods("GET", "POST", "PUT", "DELETE")
-                .allowCredentials(true);
-    }
-    
     @Bean
     public OpenAPI openAPI(ServletContext servletContext) {
         Server server = new Server().url(servletContext.getContextPath());
