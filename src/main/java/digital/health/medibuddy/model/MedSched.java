@@ -39,15 +39,6 @@ public class MedSched {
     @Column(name = "time_taken")
     private LocalDateTime timeTaken;
 
-    @Column(name = "notified")
-    private Boolean notified;
-    
-    @Column(name = "notif_type")
-    private String notificationType;
-    
-    @Column(name = "notif_details")
-    private String notifDetails;
-
     @Column(name = "taken")
     private Boolean taken;
     
@@ -78,8 +69,7 @@ public class MedSched {
     	
     }
 
-	public MedSched(Long schedId, Long medId, Medicine medicine, LocalDate day, LocalTime time, LocalDateTime timeTaken,
-			Boolean notified, String notificationType, String notifDetails, Boolean taken, String qtyTaken,
+	public MedSched(Long schedId, Long medId, Medicine medicine, LocalDate day, LocalTime time, LocalDateTime timeTaken, Boolean taken, String qtyTaken,
 			String action, LocalDateTime createdAt, LocalDateTime updatedAt) {
 		super();
 		this.schedId = schedId;
@@ -88,9 +78,6 @@ public class MedSched {
 		this.day = day;
 		this.time = time;
 		this.timeTaken = timeTaken;
-		this.notified = notified;
-		this.notificationType = notificationType;
-		this.notifDetails = notifDetails;
 		this.taken = taken;
 		this.qtyTaken = qtyTaken;
 		this.action = action;
@@ -144,30 +131,6 @@ public class MedSched {
 
 	public void setTimeTaken(LocalDateTime timeTaken) {
 		this.timeTaken = timeTaken;
-	}
-
-	public Boolean getNotified() {
-		return notified;
-	}
-
-	public void setNotified(Boolean notified) {
-		this.notified = notified;
-	}
-
-	public String getNotificationType() {
-		return notificationType;
-	}
-
-	public void setNotificationType(String notificationType) {
-		this.notificationType = notificationType;
-	}
-
-	public String getNotifDetails() {
-		return notifDetails;
-	}
-
-	public void setNotifDetails(String notifDetails) {
-		this.notifDetails = notifDetails;
 	}
 
 	public Boolean getTaken() {

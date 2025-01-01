@@ -50,10 +50,15 @@ public class Medicine {
     
     @Column(name = "cur_qty")
     private String currentQty;
-    
+
     @Column(name = "unit")
     private String unit;
 
+	@Column(name = "notif_type")
+	private String notificationType;
+
+	@Column(name = "notif_details")
+	private String notifDetails;
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
@@ -85,10 +90,7 @@ public class Medicine {
     	
     }
 
-	public Medicine(Long medId, Long userId, User user, String name, String description, String instructions,
-			String dose, String requiredQty, String initialQty, String currentQty, String unit, LocalDateTime createdAt,
-			LocalDateTime updatedAt, String attachments, String fileType, List<byte[]> files) {
-		super();
+	public Medicine(Long medId, Long userId, User user, String name, String description, String instructions, String dose, String requiredQty, String initialQty, String currentQty, String unit, String notificationType, String notifDetails, LocalDateTime createdAt, LocalDateTime updatedAt, String attachments, String fileType, List<byte[]> files) {
 		this.medId = medId;
 		this.userId = userId;
 		this.user = user;
@@ -100,6 +102,8 @@ public class Medicine {
 		this.initialQty = initialQty;
 		this.currentQty = currentQty;
 		this.unit = unit;
+		this.notificationType = notificationType;
+		this.notifDetails = notifDetails;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 		this.attachments = attachments;
@@ -195,6 +199,22 @@ public class Medicine {
 		this.unit = unit;
 	}
 
+	public String getNotificationType() {
+		return notificationType;
+	}
+
+	public void setNotificationType(String notificationType) {
+		this.notificationType = notificationType;
+	}
+
+	public String getNotifDetails() {
+		return notifDetails;
+	}
+
+	public void setNotifDetails(String notifDetails) {
+		this.notifDetails = notifDetails;
+	}
+
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
@@ -234,6 +254,4 @@ public class Medicine {
 	public void setFiles(List<byte[]> files) {
 		this.files = files;
 	}
-
-	
 }

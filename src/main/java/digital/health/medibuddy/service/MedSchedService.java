@@ -33,7 +33,6 @@ public class MedSchedService {
 	}
 
 	public MedSched addMedSched(MedSched medSched) {
-		medSched.setNotified(false);
 		medSched.setTaken(false);
 		return medSchedRepo.save(medSched);
 	}
@@ -45,9 +44,6 @@ public class MedSchedService {
         if (updatedSched.getDay() != null) existingSched.setDay(updatedSched.getDay());
         if (updatedSched.getTime() != null) existingSched.setTime(updatedSched.getTime());
         if (updatedSched.getTimeTaken() != null) existingSched.setTimeTaken(updatedSched.getTimeTaken());
-        if (updatedSched.getNotified() != null) existingSched.setNotified(updatedSched.getNotified());
-        if (updatedSched.getNotifDetails() != null) existingSched.setNotifDetails(updatedSched.getNotifDetails());
-        if (updatedSched.getNotificationType() != null) existingSched.setNotificationType(updatedSched.getNotificationType());
         if (updatedSched.getTaken() != null) existingSched.setTaken(updatedSched.getTaken());
         if (updatedSched.getQtyTaken() != null) existingSched.setQtyTaken(updatedSched.getQtyTaken());
         if (updatedSched.getAction() != null) existingSched.setAction(updatedSched.getAction());

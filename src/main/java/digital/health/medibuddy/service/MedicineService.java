@@ -52,6 +52,8 @@ public class MedicineService {
 	    if (updatedMed.getInitialQty() != null) existingMed.setInitialQty(updatedMed.getInitialQty());
 	    if (updatedMed.getCurrentQty() != null) existingMed.setCurrentQty(updatedMed.getCurrentQty());
 	    if (updatedMed.getUnit() != null) existingMed.setUnit(updatedMed.getUnit());
+		if (updatedMed.getNotifDetails() != null) existingMed.setNotifDetails(updatedMed.getNotifDetails());
+		if (updatedMed.getNotificationType() != null) existingMed.setNotificationType(updatedMed.getNotificationType());
 
 	    if (files != null && !files.isEmpty()) {
 	        List<byte[]> fileDataList = new ArrayList<>();
