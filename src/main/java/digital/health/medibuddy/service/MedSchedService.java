@@ -70,6 +70,7 @@ public class MedSchedService {
 
 	    String medName = med.getName();
 	    String dose = med.getDose();
+		String unit = med.getUnit();
 	    String instructions = med.getInstructions();
 	    User user = med.getUser();
 	    String name = user.getFirstName() + " " + user.getLastName();
@@ -82,9 +83,9 @@ public class MedSchedService {
 
 	        String containerMessage = "<h1>Hello " + carerName + "!</h1>" +
 	                "<p>" + name + " missed taking " + medName + " today (" + date + ") at " + time + ".</p>" +
-	                "<p>The doctor instructed: " + instructions + "</p>" +
-	                "<p>The dosage for " + medName + " is: " + dose + ".</p>" +
-	                "<p>" + name + " will be " + action + ".</p>" +
+	                "<p>The doctor instructed: " + instructions.split(", ")[0] + "times a day for" + instructions.split(", ")[1] + "days, " + instructions.split(", ")[2] + ", starting on" + instructions.split(", ")[3] +".</p>" +
+	                "<p>The dosage for " + medName + " is: " + dose + unit +".</p>" +
+	                "<p>" + action + "</p>" +
 	                "<p>Thank you!</p>";
 
 			String htmlContent = "<!DOCTYPE html>" +
@@ -143,16 +144,21 @@ public class MedSchedService {
 	public void checkIfTaken(Long schedId, Long userId, boolean isTaken, String qtyTaken, String action) throws MessagingException, IOException {
         MedSched sched = medSchedRepo.findById(schedId)
                 .orElseThrow(() -> new IllegalArgumentException("Schedule with ID " + schedId + " not found"));
-
+		Medicine med = sched.getMedicine();
         sched.setTaken(isTaken);
         if (isTaken) {
             sched.setTimeTaken(LocalDateTime.now(ZoneId.of("Asia/Manila")));
             sched.setQtyTaken(qtyTaken);
-        } else {
+			int initialQty = Integer.parseInt(med.getInitialQty());
+			int qtyTakenInt = Integer.parseInt(qtyTaken);
+			int currentQty = initialQty - qtyTakenInt;
+
+			med.setCurrentQty(String.valueOf(currentQty));
+		} else {
         	sched.setAction(action);
         	String date = sched.getDay().toString();
         	String time = sched.getTime().toString();
-        	Medicine med = sched.getMedicine();
+
         	List<Carer> carers = carerRepo.findByUserId(userId);
             
 			if (carers != null && !carers.isEmpty()) {

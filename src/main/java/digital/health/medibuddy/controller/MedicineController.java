@@ -46,10 +46,8 @@ public class MedicineController {
     
     
     @PutMapping("/{medId}")
-    public ResponseEntity<Medicine> updateMedicine(@PathVariable Long medId,
-                                                           @RequestPart("body") Medicine med,
-                                                           @RequestPart("files") List<MultipartFile> files) throws IOException {
-    	Medicine savedMed = medService.updateMed(medId, med, files);
+    public ResponseEntity<Medicine> updateMedicine(@PathVariable Long medId, @RequestBody Medicine med) throws IOException {
+    	Medicine savedMed = medService.updateMed(medId, med, null);
         return ResponseEntity.ok(savedMed);
     }
     
