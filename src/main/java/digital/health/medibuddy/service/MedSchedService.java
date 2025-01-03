@@ -87,37 +87,37 @@ public class MedSchedService {
 	                "<p>" + name + " will be " + action + ".</p>" +
 	                "<p>Thank you!</p>";
 
-	        String htmlContent = "<!DOCTYPE html>" +
-	                "<html lang='en'>" +
-	                "<head>" +
-	                "<meta charset='UTF-8'>" +
-	                "<meta name='viewport' content='width=device-width, initial-scale=1.0'>" +
-	                "<style>" +
-	                "body { font-family: Arial, Helvetica, sans-serif; background: #ffffff; font-size: 14px; }" +
-	                ".container { max-width: 680px; margin: 0 auto; padding: 45px 30px 60px; background: #f4f7ff; border-radius: 30px; }" +
-	                "h1 { font-size: 25px; font-weight: 800; color: #800000; text-align: center; }" + 
-	                "h2 { font-size: 20px; font-weight: 500; color: #800000; text-align: center; }" + 
-	                "p { font-size: 16px; font-weight: 500; color: #800000; line-height: 1.5; }" + 
-	                ".footer { text-align: center; margin-top: 20px; color: #800000; font-size: 14px; }" +
-	                "img { width: 50px; height: auto; vertical-align: middle; display: inline-block; pointer-events: none; -webkit-user-drag: none; user-select: none; }" +
-	                "</style>" +
-	                "</head>" +
-	                "<body>" +
-	                "<div class='container'>" +
-	                "<div style='display: flex; align-items: center;'>" +
-	                "<img src='cid:logo' alt='Logo'>" +
-	                "<h1 style='font-size: 20px; display: inline-block; margin: 0; padding-left: 10px; padding-top: 10px'>MediBuddy</h1>" +
-	                "</div>" + "<br>" +
-	                containerMessage +
-	                "</div>" +
-	                "<div class='footer'>" +
-	                "<p>Need help? Ask at <a href='mailto:dailydairy@gmail.com' style='color: #800000; text-decoration: none;'>medibuddy@gmail.com</a></p>" +
-	                "<p>&copy; 2024 MediBuddy. All rights reserved.</p>" +
-	                "</div>" +
-	                "</body>" +
-	                "</html>";
+			String htmlContent = "<!DOCTYPE html>" +
+					"<html lang='en'>" +
+					"<head>" +
+					"<meta charset='UTF-8'>" +
+					"<meta name='viewport' content='width=device-width, initial-scale=1.0'>" +
+					"<style>" +
+					"body { font-family: Arial, Helvetica, sans-serif; background: #ffffff; font-size: 14px; }" +
+					".container { max-width: 680px; margin: 0 auto; padding: 45px 30px 60px; background: #f4f7ff; border-radius: 30px; }" +
+					"h1 { font-size: 25px; font-weight: 800; color: #004D40; text-align: center; }" +
+					"h2 { font-size: 20px; font-weight: 500; color: #116F6F; text-align: center; }" +
+					"p { font-size: 16px; font-weight: 500; color: #434343; line-height: 1.5; }" +
+					".footer { text-align: center; margin-top: 20px; color: #8c8c8c; font-size: 14px; }" +
+					"img { width: 50px; height: auto; vertical-align: middle; display: inline-block; pointer-events: none; -webkit-user-drag: none; user-select: none; }" +
+					"</style>" +
+					"</head>" +
+					"<body>" +
+					"<div class='container'>" +
+					"<div style='display: flex; align-items: center;'>" +
+					"<img src='cid:logo' alt='Logo'>" +
+					"<h1 style='font-size: 20px; display: inline-block; margin: 0; padding-left: 10px; padding-top: 10px'>MediBuddy</h1>" +
+					"</div>" + "<br>" +
+					containerMessage +
+					"</div>" +
+					"<div class='footer'>" +
+					"<p>Need help? Ask at <a href='mailto:medibuddy@gmail.com' style='color: #499fb6; text-decoration: none;'>medibuddy@gmail.com</a></p>" +
+					"<p>&copy; 2024 MediBuddy. All rights reserved.</p>" +
+					"</div>" +
+					"</body>" +
+					"</html>";
 
-	        MimeMessage message = javaMailSender.createMimeMessage();
+			MimeMessage message = javaMailSender.createMimeMessage();
 
 	        message.setRecipients(MimeMessage.RecipientType.TO, carerEmail);
 	        message.setSubject(subject);
