@@ -21,15 +21,12 @@ public class MedicineController {
 	public MedicineController(MedicineService medService) {
 		this.medService = medService;
 	}
-	
+
     @PostMapping
-    public ResponseEntity<Medicine> addMedicine(
-            @RequestPart("body") Medicine med,
-            @RequestPart("files") List<MultipartFile> files) throws IOException {
-        Medicine savedMed = medService.addMed(med, files);
+    public ResponseEntity<Medicine> addMedicine(@RequestBody Medicine med) throws IOException {
+        Medicine savedMed = medService.addMed(med, null); // Adjust logic to handle files if needed
         return ResponseEntity.ok(savedMed);
     }
-    
     @GetMapping("/{medId}")
     public ResponseEntity<Medicine> getMedById(@PathVariable Long medId) {
        	Medicine med = medService.findByMedId(medId);
